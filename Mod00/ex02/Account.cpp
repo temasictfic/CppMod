@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Account.cpp                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/06/04 21:16:30 by sciftci           #+#    #+#             */
+/*   Updated: 2023/06/04 21:16:43 by sciftci          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <ctime>
 #include <iostream>
 #include <iomanip>
@@ -106,6 +118,5 @@ void	Account::_displayTimestamp( void ){
     time_t now = time(0);
 	tm *time = localtime(&now);
 	std::cout << "[" << time->tm_year + 1900 << std::setfill('0') << std::setw(2) << time->tm_mday << std::setfill('0') << std::setw(2) << time->tm_mon + 1 << "_";
-	std::cout << std::setfill('0') << std::setw(2) << time->tm_hour << std::setfill('0') << std::setw(2) << time->tm_min << std::setfill('0') << std::setw(2) << time->tm_sec << "] "; 
-
+	std::cout << std::setfill('0') << std::setw(2) << time->tm_hour << std::setfill('0') << std::setw(2) << time->tm_min << std::setfill('0') << std::setw(2) << time->tm_sec << "] ";
 }
