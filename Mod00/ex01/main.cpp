@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:56:10 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/04 19:56:14 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 19:19:18 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,18 @@
 #include <sstream>
 #include "PhoneBook.hpp"
 
-std::string truncate(std::string field){
+std::string truncate(std::string field)
+{
     std::string str;
 
     str = field;
     if (str.length() > 10)
-        str = str.substr(0,9) + '.';
-    return(str);  
+        str = str.substr(0, 9) + '.';
+    return (str);
 }
 
-void display_only(PhoneBook pbook){
-    
+void display_only(PhoneBook pbook)
+{
     int index;
     char c;
     std::string buf;
@@ -35,7 +36,8 @@ void display_only(PhoneBook pbook){
     std::cout << "Input Index: [0-7]" << std::endl;
     std::cin >> buf;
     ss << buf;
-    if ((ss >> index).fail() || ss.get(c) || !(index >= 0 && index < 8)){
+    if ((ss >> index).fail() || ss.get(c) || !(index >= 0 && index < 8))
+    {
         std::cout << "Out of Range Index or Not Int, Must be [0-7]" << std::endl;
         return display_only(pbook);
     }
@@ -55,40 +57,45 @@ int main()
     std::string fields[5];
     const char *names[6] = {"index", "first name", "last name", "nickname", "phone number", "darkest secret"};
 
-    while(1){
-            std::cout << "Input a Command: [ADD, SEARCH, EXIT]" << std::endl;
-            std::cin >> cmd;
+    while (1)
+    {
+        std::cout << "Input a Command: [ADD, SEARCH, EXIT]" << std::endl;
+        std::cin >> cmd;
 
-            if (cmd == "ADD"){
-                for (size_t i = 0; i < 5; i++)
-                {
-                    std::cout << "Input " << names[i + 1] << ":" << std::endl;
-                    std::cin >> fields[i];
-                }
-                PhoneBookInstance.addContact(ContactInstance.setField(fields));
+        if (cmd == "ADD")
+        {
+            for (size_t i = 0; i < 5; i++)
+            {
+                std::cout << "Input " << names[i + 1] << ":" << std::endl;
+                std::cin >> fields[i];
             }
-            else if (cmd == "SEARCH"){
-                for (size_t i = 0; i < 4; i++)
-                {
-                    std::cout << " | " << std::right << std::setw(10) << names[i];
-                }
+            PhoneBookInstance.addContact(ContactInstance.setField(fields));
+        }
+        else if (cmd == "SEARCH")
+        {
+            for (size_t i = 0; i < 4; i++)
+            {
+                std::cout << " | " << std::right << std::setw(10) << names[i];
+            }
+            std::cout << " | " << std::endl;
+            for (int i = 0; i < PhoneBookInstance.getCount(); i++)
+            {
+                std::cout << " | " << std::right << std::setw(10) << i;
+                std::cout << " | " << std::right << std::setw(10) << truncate(PhoneBookInstance.getContact(i).getField(0));
+                std::cout << " | " << std::right << std::setw(10) << truncate(PhoneBookInstance.getContact(i).getField(1));
+                std::cout << " | " << std::right << std::setw(10) << truncate(PhoneBookInstance.getContact(i).getField(2));
                 std::cout << " | " << std::endl;
-                for (int i = 0; i < PhoneBookInstance.getCount(); i++)
-                {
-                    std::cout << " | " << std::right << std::setw(10) << i;
-                    std::cout << " | " << std::right << std::setw(10) << truncate(PhoneBookInstance.getContact(i).getField(0));
-                    std::cout << " | " << std::right << std::setw(10) << truncate(PhoneBookInstance.getContact(i).getField(1));
-                    std::cout << " | " << std::right << std::setw(10) << truncate(PhoneBookInstance.getContact(i).getField(2));
-                    std::cout << " | " << std::endl;
-                }
-                display_only(PhoneBookInstance);
             }
-            else if (cmd == "EXIT"){
-                std::exit(EXIT_SUCCESS);
-            }
-            else{
-                std::cout << "Wrong Command!" << std::endl;
-            }   
+            display_only(PhoneBookInstance);
+        }
+        else if (cmd == "EXIT")
+        {
+            std::exit(EXIT_SUCCESS);
+        }
+        else
+        {
+            std::cout << "Wrong Command!" << std::endl;
+        }
     }
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:56:07 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/04 19:56:08 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 17:40:52 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 #include <string>
 
-class Contact {
+class Contact
+{
 private:
     std::string first_name;
     std::string last_name;
@@ -28,7 +29,6 @@ public:
     ~Contact();
     std::string getField(int index);
     Contact setField(std::string fields[5]);
-
 };
 
 #endif

@@ -6,19 +6,22 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:56:03 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/04 19:56:04 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 17:40:47 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
-Contact::Contact(){
+Contact::Contact()
+{
 }
 
-Contact::~Contact(){
+Contact::~Contact()
+{
 }
 
-std::string Contact::getField(int index){
+std::string Contact::getField(int index)
+{
     if (index == 0)
         return (this->first_name);
     else if (index == 1)
@@ -32,11 +35,12 @@ std::string Contact::getField(int index){
     return "";
 }
 
-Contact Contact::setField(std::string fields[5]){
+Contact Contact::setField(std::string fields[5])
+{
     this->first_name = fields[0];
     this->last_name = fields[1];
     this->nickname = fields[2];
     this->phone_number = fields[3];
     this->darkest_secret = fields[4];
-    return(*this);
+    return (*this);
 }

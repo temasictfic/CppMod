@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 03:50:05 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/05 03:50:06 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 17:42:19 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ class HumanB
 {
 private:
     std::string _name;
-    Weapon* _wpB;
+    Weapon *_wpB;
+
 public:
     HumanB(std::string name);
     ~HumanB();
-    void    setWeapon(Weapon& wp);
+    void setWeapon(Weapon &wp);
     void attack() const;
-
 };

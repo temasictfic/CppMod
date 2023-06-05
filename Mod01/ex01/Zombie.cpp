@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 02:10:10 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/05 02:10:11 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 17:41:53 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ Zombie::Zombie(/* args */)
 
 Zombie::~Zombie()
 {
-    std::cout << this->_name << ": " << "Destroyed!" << std::endl;
+    std::cout << this->_name << ": "
+              << "Destroyed!" << std::endl;
 }
 
-void Zombie::announce( void ){
-    std::cout << this->_name << ": " << "BraiiiiiiinnnzzzZ..." << std::endl;
-}
-
-void	Zombie::setName(std::string name)
+void Zombie::announce(void)
 {
-	this->_name = name;
+    std::cout << this->_name << ": "
+              << "BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+void Zombie::setName(std::string name)
+{
+    this->_name = name;
 }

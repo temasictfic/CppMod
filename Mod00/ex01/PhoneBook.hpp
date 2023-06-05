@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/04 19:56:24 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/04 19:56:25 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 17:41:05 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ class PhoneBook
 {
 private:
     Contact contacts[8];
-    int  count;
+    int count;
     size_t index;
+
 public:
     PhoneBook();
     ~PhoneBook();

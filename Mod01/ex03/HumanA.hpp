@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 03:50:12 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/05 03:50:13 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/05 17:42:14 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ class HumanA
 {
 private:
     std::string _name;
-    Weapon& _wpA;
+    Weapon &_wpA;
+
 public:
-    HumanA(std::string name, Weapon& wp);
+    HumanA(std::string name, Weapon &wp);
     ~HumanA();
-    void    setWeapon(Weapon& wp);
+    void setWeapon(Weapon &wp);
     void attack() const;
 };
-
