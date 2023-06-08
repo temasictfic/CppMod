@@ -6,11 +6,11 @@
 #    By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/04 21:16:21 by sciftci           #+#    #+#              #
-#    Updated: 2023/06/04 21:16:22 by sciftci          ###   ########.fr        #
+#    Updated: 2023/06/08 13:09:12 by sciftci          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = g++
+CC = c++
 RM = rm -f
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 
