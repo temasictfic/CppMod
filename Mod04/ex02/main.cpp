@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 15:05:19 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/09 20:17:38 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/12 21:59:35 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,6 @@ int main()
 	Dog dog;
 	//Animal anim; //not allowed
 	//Animal *anim = new Animal(); //not allowed
+	std::cout << cat.getBrain().getIdea(0) << std::endl;
+	std::cout << dog.getBrain().getIdea(1) << std::endl;
 }
