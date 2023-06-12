@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 15:05:19 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/09 19:16:14 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/12 22:20:51 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ int main()
 	delete dog;
 	delete wrongcat1;
 	delete wrongcat2;
+	system("leaks justlikeanimal");
 }
