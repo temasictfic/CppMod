@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 21:13:10 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/10 21:15:00 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/12 21:44:15 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ Character::Character(const Character &copy)
 		this->_inventory[i] = (copy._inventory[i]) ? copy._inventory[i]->clone() : NULL;
 	std::cout << "Copy constructor is called of " << this->_name << std::endl;
 }
-
-ICharacter::~ICharacter(){}
 
 Character::~Character()
 {
