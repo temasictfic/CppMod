@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:29:40 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/17 21:48:08 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/17 23:47:27 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,16 @@ private:
     } _type;
 
 public:
-    ScalarConverter(std::string literal);
+    ScalarConverter(const std::string literal);
     ScalarConverter(const ScalarConverter &copy);
     ~ScalarConverter();
 
     ScalarConverter &operator=(const ScalarConverter &assign);
 
-    char toChar(std::string literal);
-    int toInt(std::string literal);
-    float toFloat(std::string literal);
-    double toDouble(std::string literal);
-    void convert(std::string literal);
+    char toChar(const std::string literal);
+    int toInt(const std::string literal);
+    double toDouble(const std::string literal);
+    void convert(const std::string literal);
 
     class NonDisplayableCharException : public std::exception
     {

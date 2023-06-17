@@ -6,13 +6,13 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/17 21:29:50 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/17 22:10:17 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/17 23:47:31 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(std::string literal)
+ScalarConverter::ScalarConverter(const std::string literal)
 {
     if (literal.empty())
         throw InvalidConversionInputException();
@@ -54,41 +54,40 @@ const char *ScalarConverter::InvalidConversionInputException::what() const throw
     return "Invalid conversion input";
 }
 
-char ScalarConverter::toChar(std::string literal)
+char ScalarConverter::toChar(const std::string literal)
 {
-    if (literal == "0.0" || literal == "0.0f" || literal == "0")
+    std::string str(literal);
+    if (str[0] == '+' || str[0] == '-')
+        str.erase(0, 1);
+    if (str[0] == '0')
         throw NonDisplayableCharException();
     long c = strtol(literal.c_str(), NULL, 10);
     if (c == 0L || c < CHAR_MIN || c > CHAR_MAX)
         throw ImposibleConversionException();
-    else if (c < 33 || c > 126)
+    else if (!isprint(c))
         throw NonDisplayableCharException();
     return static_cast<char>(c);
 }
 
-int ScalarConverter::toInt(std::string literal)
+int ScalarConverter::toInt(const std::string literal)
 {
-    if (literal == "0")
+    std::string str(literal);
+    if (str[0] == '+' || str[0] == '-')
+        str.erase(0, 1);
+    if (str[0] == '0')
         return 0;
     long i = strtol(literal.c_str(), NULL, 10);
-    if (i == 0 || i > INT_MAX || i < INT_MIN)
+    if (i == 0L || i > INT_MAX || i < INT_MIN)
         throw ImposibleConversionException();
     return static_cast<int>(i);
 }
 
-float ScalarConverter::toFloat(std::string literal)
+double ScalarConverter::toDouble(const std::string literal)
 {
-    if (literal == "0.0" || literal == "0")
-        return 0.0f;
-    float f = strtof(literal.c_str(), NULL);
-    if (f == 0.0f)
-        throw ImposibleConversionException();
-    return f;
-}
-
-double ScalarConverter::toDouble(std::string literal)
-{
-    if (literal == "0.0f" || literal == "0")
+    std::string str(literal);
+    if (str[0] == '+' || str[0] == '-')
+        str.erase(0, 1);
+    if (str == "0.0f" || str == "0.0" || str == "0")
         return 0.0;
     double d = strtod(literal.c_str(), NULL);
     if (d == 0.0)
@@ -96,18 +95,18 @@ double ScalarConverter::toDouble(std::string literal)
     return d;
 }
 
-void ScalarConverter::convert(std::string literal)
+void ScalarConverter::convert(const std::string literal)
 {
     if (_type == _charType)
     {
-        std::cout << "char: " << literal << std::endl;
-        std::cout << "int: " << static_cast<int>(literal[0]) << std::endl;
-        std::cout << "float: " << std::showpoint << static_cast<float>(literal[0]) << "f" << std::endl;
+        std::cout << "char  : " << literal << std::endl;
+        std::cout << "int   : " << static_cast<int>(literal[0]) << std::endl;
+        std::cout << "float : " << std::showpoint << static_cast<float>(literal[0]) << "f" << std::endl;
         std::cout << "double: " << std::showpoint << static_cast<double>(literal[0]) << std::endl;
     }
     else if (_type == _intType)
     {
-        std::cout << "char: ";
+        std::cout << "char  : ";
         try
         {
             std::cout << toChar(literal) << std::endl;
@@ -116,11 +115,11 @@ void ScalarConverter::convert(std::string literal)
         {
             std::cout << e.what() << std::endl;
         }
-        std::cout << "int: " << literal << std::endl;
-        std::cout << "float: ";
+        std::cout << "int   : " << literal << std::endl;
+        std::cout << "float : ";
         try
         {
-            std::cout << std::showpoint << toFloat(literal) << "f" << std::endl;
+            std::cout << std::showpoint << static_cast<float>(toDouble(literal)) << "f" << std::endl;
         }
         catch (const std::exception &e)
         {
@@ -138,7 +137,7 @@ void ScalarConverter::convert(std::string literal)
     }
     else if (_type == _floatType)
     {
-        std::cout << "char: ";
+        std::cout << "char  : ";
         try
         {
             std::cout << toChar(literal) << std::endl;
@@ -147,7 +146,7 @@ void ScalarConverter::convert(std::string literal)
         {
             std::cout << e.what() << std::endl;
         }
-        std::cout << "int: ";
+        std::cout << "int   : ";
         try
         {
             std::cout << toInt(literal) << std::endl;
@@ -156,7 +155,7 @@ void ScalarConverter::convert(std::string literal)
         {
             std::cout << e.what() << std::endl;
         }
-        std::cout << "float: " << literal << std::endl;
+        std::cout << "float : " << std::showpoint << static_cast<float>(toDouble(literal)) << "f" << std::endl;
         std::cout << "double: ";
         try
         {
@@ -169,7 +168,7 @@ void ScalarConverter::convert(std::string literal)
     }
     else if (_type == _doubleType)
     {
-        std::cout << "char: ";
+        std::cout << "char  : ";
         try
         {
             std::cout << toChar(literal) << std::endl;
@@ -178,7 +177,7 @@ void ScalarConverter::convert(std::string literal)
         {
             std::cout << e.what() << std::endl;
         }
-        std::cout << "int: ";
+        std::cout << "int   : ";
         try
         {
             std::cout << toInt(literal) << std::endl;
@@ -187,15 +186,15 @@ void ScalarConverter::convert(std::string literal)
         {
             std::cout << e.what() << std::endl;
         }
-        std::cout << "float: ";
+        std::cout << "float : ";
         try
         {
-            std::cout << std::showpoint << toFloat(literal) << "f" << std::endl;
+            std::cout << std::showpoint << static_cast<float>(toDouble(literal)) << "f" << std::endl;
         }
         catch (const std::exception &e)
         {
             std::cout << e.what() << std::endl;
         }
-        std::cout << "double: " << literal << std::endl;
+        std::cout << "double: " << std::showpoint << toDouble(literal) << std::endl;
     }
 }
