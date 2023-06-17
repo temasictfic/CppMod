@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/10 21:13:39 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/10 21:13:44 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/12 22:22:21 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ int main()
     delete bob;
     delete me;
     delete src;
+    system("leaks alchemy");
 }
