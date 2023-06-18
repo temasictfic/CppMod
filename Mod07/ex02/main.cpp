@@ -1,88 +1,54 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/19 01:26:13 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/19 01:52:40 by sciftci          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "Array.tpp"
 #include <iostream>
+#include "Array.tpp"
+#include <cstdlib>
 
-int main(void)
+#define MAX_VAL 750
+int main(int, char**)
 {
-    Array<int> i = Array<int>();
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
+    }
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
+
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
     try
     {
-        std::cout << i[0] << std::endl;
+        numbers[-2] = 0;
     }
-    catch (const std::exception &e)
+    catch(const std::exception& e)
     {
         std::cerr << e.what() << '\n';
     }
-    std::cout << "i   : " << i << std::endl;
-    Array<int> *a = new Array<int>();
-    Array<int> *b = new Array<int>(10);
-    std::cout << "b   : " << *b << std::endl;
-    int arr[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-    memcpy(b->getArr(), arr, 10 * sizeof(int));
-
-    std::cout << "a   : " << *a << std::endl;
-    std::cout << "b   : " << *b << std::endl;
-
-    // copy
-    Array<int> copy = Array<int>(*b);
-    std::cout << "copy: " << copy << std::endl;
-
-    std::cout << "copy address: " << &copy << std::endl;
-    std::cout << "b address   : " << b << std::endl;
-
-    // assign
-    std::cout << "a address   : " << a << std::endl;
-    *a = copy;
-    std::cout << "a address   : " << a << std::endl;
-    std::cout << "copy address: " << &copy << std::endl;
-    std::cout << "a   : " << *a << std::endl;
-
-    std::cout << "copy size: " << copy.size() << std::endl;
     try
     {
-        std::cout << "copy[2]  : " << copy[9] << std::endl;
-        std::cout << "copy[10] : " << copy[10] << std::endl;
+        numbers[MAX_VAL] = 0;
     }
-    catch (const std::exception &e)
+    catch(const std::exception& e)
     {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << '\n';
     }
 
-    Array<float> *c = new Array<float>();
-    Array<float> *d = new Array<float>(10);
-    float arr2[] = {0., 1., 2., 3., 4., 5., 6., 7., 8., 9.};
-    memcpy(d->getArr(), arr2, 10 * sizeof(float));
-
-    std::cout << "c    : " << *c << std::endl;
-    std::cout << "d    : " << std::showpoint << *d << std::endl;
-
-    // copy
-    Array<float> copy2 = Array<float>(*d);
-    std::cout << "copy2: " << std::showpoint << copy2 << std::endl;
-
-    // assign
-    *c = copy2;
-    std::cout << "c    : " << std::showpoint << *c << std::endl;
-
-    std::cout << "copy2 size: " << copy2.size() << std::endl;
-    try
+    for (int i = 0; i < MAX_VAL; i++)
     {
-        std::cout << "copy2[2]  : " << copy2[9] << std::endl;
-        std::cout << "copy2[10] : " << copy2[10] << std::endl;
+        numbers[i] = rand();
     }
-    catch (const std::exception &e)
-    {
-        std::cerr << e.what() << std::endl;
-    }
+    delete [] mirror;//
+    return 0;
 }
