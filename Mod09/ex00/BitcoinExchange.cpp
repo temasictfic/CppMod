@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 20:35:15 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/21 20:35:16 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:40:44 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ BitcoinExchange::BitcoinExchange(std::ifstream &db, std::ifstream &input)
     std::string dateDb, dateInput, rateDb, rateInput;
     float valueDb, valueInput;
     std::map<std::string, float> dbMap;
-    std::map<float, std::string> inputMap;
 
     std::getline(db, dateDb, ',');
     std::getline(db, rateDb);
