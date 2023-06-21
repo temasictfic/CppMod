@@ -6,7 +6,7 @@
 /*   By: sciftci <sciftci@student.42kocaeli.com.tr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 01:26:25 by sciftci           #+#    #+#             */
-/*   Updated: 2023/06/19 01:48:14 by sciftci          ###   ########.fr       */
+/*   Updated: 2023/06/21 02:53:44 by sciftci          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ public:
     Array<T> &operator=(Array<T> const &assign)
     {
         _len = assign._len;
+        delete[] _arr;
         _arr = new T[_len];
         memcpy(_arr, assign._arr, _len * sizeof(T));
         /*
